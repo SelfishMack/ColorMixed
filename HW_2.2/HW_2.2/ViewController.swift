@@ -24,11 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        labelReg.text = String(format: "%.2f", slaiderRed.value)
-//        labelGreen.text = String(format: "%.2f", slaiderGreen.value)
-//        labelBlue.text = String(format: "%.2f", slaiderBlue.value)
+
         setSlaiderDefolt ()
         setColorView()
     }
@@ -38,6 +34,10 @@ class ViewController: UIViewController {
         for slaider in slaidersDefolt {
             slaider.value = 0.5
         }
+    }
+    
+    @IBAction func slaidersAction() {
+        setColorView()
     }
     
     private func settingValueLabel () {
@@ -62,24 +62,6 @@ class ViewController: UIViewController {
             alpha: 1)
         settingValueLabel ()
     }
-    
-    @IBAction func slaidersAction() {
-        setColorView()
-    }
-    
-    
-    
-//    @IBAction func slaiderRedAction() {
-//        setColorView()
-//    }
-//
-//    @IBAction func slaiderGreenAction() {
-//        setColorView()
-//    }
-//
-//    @IBAction func slaiderBlueAction() {
-//        setColorView()
-//    }
     
 }
 

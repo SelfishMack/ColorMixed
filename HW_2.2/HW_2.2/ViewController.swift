@@ -19,43 +19,67 @@ class ViewController: UIViewController {
     @IBOutlet weak var slaiderGreen: UISlider!
     @IBOutlet weak var slaiderBlue: UISlider!
     
+    private var slaidersDefolt: [UISlider] = []
+    private var setingLabels: [UILabel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        slaiderRed.value = 0.5
-        slaiderGreen.value = 0.5
-        slaiderBlue.value = 0.5
         
 //        labelReg.text = String(format: "%.2f", slaiderRed.value)
 //        labelGreen.text = String(format: "%.2f", slaiderGreen.value)
 //        labelBlue.text = String(format: "%.2f", slaiderBlue.value)
-        
+        setSlaiderDefolt ()
         setColorView()
     }
     
-    func setColorView() {
+    private func setSlaiderDefolt () {
+        slaidersDefolt = [slaiderRed, slaiderGreen, slaiderBlue]
+        for slaider in slaidersDefolt {
+            slaider.value = 0.5
+        }
+    }
+    
+    private func settingValueLabel () {
+        setingLabels = [labelRed, labelGreen, labelBlue]
+        for labels in setingLabels {
+            switch labels {
+            case labelRed:
+                labels.text = String(format: "%.2f", slaiderRed.value)
+            case labelGreen:
+                labels.text = String(format: "%.2f", slaiderGreen.value)
+            default:
+                labels.text = String(format: "%.2f", slaiderBlue.value)
+            }
+        }
+    }
+    
+    private func setColorView() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(slaiderRed.value),
             green: CGFloat(slaiderGreen.value),
             blue: CGFloat(slaiderBlue.value),
             alpha: 1)
-        labelRed.text = String(format: "%.2f", slaiderRed.value)
-        labelGreen.text = String(format: "%.2f", slaiderGreen.value)
-        labelBlue.text = String(format: "%.2f", slaiderBlue.value)
+        settingValueLabel ()
     }
     
-    
-    @IBAction func slaiderRedAction() {
+    @IBAction func slaidersAction() {
         setColorView()
     }
     
-    @IBAction func slaiderGreenAction() {
-        setColorView()
-    }
     
-    @IBAction func slaiderBlueAction() {
-        setColorView()
-    }
+    
+//    @IBAction func slaiderRedAction() {
+//        setColorView()
+//    }
+//
+//    @IBAction func slaiderGreenAction() {
+//        setColorView()
+//    }
+//
+//    @IBAction func slaiderBlueAction() {
+//        setColorView()
+//    }
     
 }
 
